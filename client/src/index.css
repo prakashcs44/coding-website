@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    box-sizing: border-box;
+}
+body{
+    --tw-bg-opacity: 1;
+    background-color: rgb( 65 65 75 / var(--tw-bg-opacity));
+}
+
+
+
+#editor-setting-display{
+    display: none;
+}
+
+#reset-code-display{
+    display: none;
+    transform: translateX(-50%);
+}
+
+#editor-setting:hover + #editor-setting-display{
+    display: flex;
+}
+
+#reset-code:hover + #reset-code-display{
+    display: flex;
+}
+
+
+
+.custom-h10{
+    height: 10%;
+}
