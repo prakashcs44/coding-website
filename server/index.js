@@ -11,7 +11,7 @@ app.use(express.json());
 
 function isValidArray(input) {
   try {
-  
+ 
     // Check if the parsed value is an array
     return Array.isArray(input);
   } catch (error) {
@@ -38,7 +38,29 @@ function parseOutput(output){
 }
 
 
-function convertTestcases(testcases){
+
+function convertToArray(tsc) {
+  try{
+    const temp = tsc.split('\n').filter(item => item.trim() !== '');
+    const result  = [];
+     for(let i=0;i<temp.length;i++){
+        result.push(JSON.parse(temp[i]));
+     }
+     return result;
+  }
+  catch(err){
+   //
+  }
+
+
+}
+
+
+
+function convertTestcases(tsc){
+
+   const testcases = convertToArray(tsc);
+
    if(!isValidArray(testcases)) return -1;
     const t = JSON.stringify(testcases)
    let res = "const vector<vector<int>> userTestcase = ";
@@ -51,8 +73,9 @@ function convertTestcases(testcases){
     }
     else  res+=t[i];
    }
-
+   console.log(res);
    return res+=";";
+   
 
 }
 
@@ -61,7 +84,7 @@ const BoilerPlate = "#include<bits/stdc++.h>\nusing namespace std;\n"
 
 
 app.post("/runcode",(req,res)=>{
-     
+    
     const {code,testcases}  = req.body;
     const tsc = convertTestcases(testcases);
     if(tsc===-1) return res.json({err:"Invalid testcase"});

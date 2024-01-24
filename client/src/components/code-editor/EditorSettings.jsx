@@ -7,16 +7,24 @@ function EditorSettings() {
  
  const {settingDisplay,setSettingDisplay,setTheme,setFontSize} = useContext(EditorContext)
 
-  
+
+ 
+
+
    
 
 const toggleDisplay = ()=>{
   
-    if(settingDisplay === "hidden"){
-        
-        setSettingDisplay("inline-block")
-    }
-    else setSettingDisplay("hidden")
+    setSettingDisplay((prevDisplay)=>{
+         if(prevDisplay==="hidden"){
+          return "inline-block"
+         }
+         else{
+          return "hidden"
+         }
+    })
+
+   
 }
 
 
@@ -25,7 +33,7 @@ const toggleDisplay = ()=>{
 
 
   return (
-    <div className={'w-1/3 absolute bg-slate-300 z-10 left-1/3 left- top-24 shadow-xl'+` ${settingDisplay}`}>
+    <div className={'w-1/3 absolute bg-slate-300 z-10 left-1/3 left- top-24 shadow-xl'+` ${settingDisplay}`} id = "editor-settings">
         <div className=' h-14 flex justify-between px-5 items-center '>
         <h1 className='text-3xl'>Editor settings</h1>
         <button
