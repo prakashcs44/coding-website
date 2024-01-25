@@ -8,9 +8,9 @@ import Console from './Console';
 
 const initialTestcases = "[1,2,3]\n[0,-1,4]\n[2]"
 
-function CodeEditor({width}) {
-const initialCode = "class Solution{\npublic:\nint sumOfArray(vector<int> &nums){\n\n}\n};"
-const [code,setCode] = useState(initialCode)
+function CodeEditor({width,boilerPlateCode}) {
+
+const [code,setCode] = useState(boilerPlateCode)
 const [output,setOutput] = useState({})
 const {setSettingDisplay,theme,fontSize} = useContext(EditorContext)
 const [resultLoading,setResultLoading] = useState(false);
@@ -106,7 +106,7 @@ const toggleConsole = ()=>{
       <div style = {{height:editorHeight}} className='resize-y'>
       <Editor 
       options={editorOptions}
-      value={code}
+      value={boilerPlateCode}
       height="100%" width="100%" theme={theme} defaultLanguage='cpp' 
       onChange={(code)=>setCode(code)}
     
