@@ -1,45 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { EditorContext } from '../../contexts/codeeditorctx'
+import React, { useState } from 'react'
 
-function EditorSettings() {
+function EditorSettings({setFontSize,setTheme,id}) {
    
-
- 
- const {settingDisplay,setSettingDisplay,setTheme,setFontSize} = useContext(EditorContext)
-
-
- 
-
-
-   
-
-const toggleDisplay = ()=>{
-  
-    setSettingDisplay((prevDisplay)=>{
-         if(prevDisplay==="hidden"){
-          return "inline-block"
-         }
-         else{
-          return "hidden"
-         }
-    })
-
-   
-}
-
-
-
-
 
 
   return (
-    <div className={'w-1/3 absolute bg-slate-300 z-10 left-1/3 left- top-24 shadow-xl'+` ${settingDisplay}`} id = "editor-settings">
+    <div className={'w-1/3 absolute bg-slate-300 z-10  shadow-x'}  popover = "auto" id={id}>
         <div className=' h-14 flex justify-between px-5 items-center '>
         <h1 className='text-3xl'>Editor settings</h1>
         <button
-        onClick={()=>{
-            toggleDisplay()
-        }}
         > 
         <svg viewBox="0 0 24 24" width="1.5em" height="1.5em" class="icon__1Md2 modal-close-btn__2d-I"><path fill-rule="evenodd" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>

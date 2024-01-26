@@ -2,7 +2,7 @@ const express = require("express")
 const cors = require("cors")
 const {exec} = require("child_process");
 const fs = require("fs");
-
+const problems = require("./problemdataset/leetcode_problems_subset.json")
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -124,6 +124,32 @@ app.post("/runcode",(req,res)=>{
 
     
 })
+
+
+app.get("/problems",(req,res)=>{
+  return res.json(problems);
+})
+
+
+app.get("/problems/:id",(req,res)=>{
+   const {id} = req.params
+  
+   const prs = problems.problems;
+   let ans = {};
+
+
+    for(let i=0;i<prs.length;i++){
+      if(prs[i].id===parseInt(id)){
+      
+        ans = prs[i];
+        break;
+      }
+    }
+    
+    return res.json(ans);
+})
+
+
 
 
 app.listen("3000",()=>{

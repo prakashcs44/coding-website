@@ -1,19 +1,11 @@
 import React, { useState } from 'react'
 
 
-
-
-
-
-
-
-
 function Output({result, testcases }){
- 
    const expected = result?.expected;
    const  output = result?.output;
    const  err = result?.err;
-    const passed = result?.passed;
+  const passed = result?.passed;
    
 if(err){
   return (
@@ -104,7 +96,7 @@ const [currBtn,setCurrBtn] = useState("output");
 
 
   return (
-    <div className={`${display} `+'w-full bg-slate-300 flex flex-col'}
+    <div className={`${display} `+'w-full bg-slate-300 flex flex-col flex-grow'}
     style={{height}}
     >
       <div className=' h-1/6 bg-slate-500 w-full flex text-white'>

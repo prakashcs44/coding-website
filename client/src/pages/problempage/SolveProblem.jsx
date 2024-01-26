@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Problem from '../../components/problem-statement/Problem'
-import Editor from "../../components/code-editor/Editor"
 import { useLocation} from 'react-router-dom'
+import CodeEditor from '../../components/code-editor/CodeEditor';
 
 function SolveProblem() {
 
@@ -28,7 +28,7 @@ function SolveProblem() {
   return (
     <div className='flex h-screen overflow-x-hidden'>
       <Problem problem = {problem}/>
-      <Editor boilerPlateCode = {problem?.bpcode} />
+      <CodeEditor boilerPlateCode = {problem?.bpcode} />
     </div>
   )
 }

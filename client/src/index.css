@@ -12,25 +12,4 @@ body{
 
 
 
-#editor-setting-display{
-    display: none;
-}
 
-#reset-code-display{
-    display: none;
-    transform: translateX(-50%);
-}
-
-#editor-setting:hover + #editor-setting-display{
-    display: flex;
-}
-
-#reset-code:hover + #reset-code-display{
-    display: flex;
-}
-
-
-
-.custom-h10{
-    height: 10%;
-}
