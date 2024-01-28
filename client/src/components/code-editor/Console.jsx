@@ -9,7 +9,7 @@ function Output({result, testcases }){
    
 if(err){
   return (
-    <div className='h-full flex justify-center items-center overflow-y-auto overflow-x-hidden text-red-600'>
+    <div className='h-full flex justify-center items-center overflow-y-auto overflow-x-hidden text-red-600 bg-white'>
       {err}
     </div>
   )
@@ -18,7 +18,7 @@ if(err){
 
 if(passed===undefined&&err==undefined){
   return (
-    <div className='h-full flex justify-center items-center overflow-y-auto overflow-x-hidden'>
+    <div className='h-full flex justify-center items-center overflow-y-auto overflow-x-hidden bg-white text-lg'>
       Run a testcase to see the output
     </div>
   )

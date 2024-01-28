@@ -9,7 +9,7 @@ import ResizeBar from "./ResizeBar"
 const initialTestcases = "[1,2,3]\n[0,-1,4]\n[2]"
 
 function CodeEditor({ boilerPlateCode }) {
-  console.log(boilerPlateCode)
+
   const [width, setWidth] = useState("800px");
   const [code, setCode] = useState(boilerPlateCode)
   const [output, setOutput] = useState({})
@@ -34,6 +34,7 @@ function CodeEditor({ boilerPlateCode }) {
 
   const submitCode = async () => {
     setResultLoading(true)
+    try{
     const response = await fetch("http://localhost:3000/runcode", {
       method: "POST",
       body: JSON.stringify({ code, testcases }),
@@ -45,9 +46,14 @@ function CodeEditor({ boilerPlateCode }) {
     const responeJson = await response.json();
 
     setOutput(responeJson)
-    setResultLoading(false)
+   
     setConsoleDisplay(true);
+    }
+    catch(err){
 
+    }
+   
+     setResultLoading(false)
 
   }
 
@@ -72,9 +78,9 @@ function CodeEditor({ boilerPlateCode }) {
 
 
   return (
-    <div className='flex'>
+    <div className='flex h-screen'>
       <ResizeBar setWidth={(width) => setWidth(width)} />
-      <div className='h-screen '
+      <div className='h-full flex flex-col '
         style={{ width }}
       >
 

@@ -1,14 +1,21 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 function EditorSettings({setFontSize,setTheme,id}) {
    
-
+   const popoverRef = useRef();
+ 
+  
+   const hidePopover = ()=>{
+    popoverRef.current.hidePopover();
+   }
+   
 
   return (
-    <div className={'w-1/3 absolute bg-slate-300 z-10  shadow-x'}  popover = "auto" id={id}>
+    <div className={'w-1/3 absolute bg-slate-300  shadow-x backdrop:bg-opacity-60 backdrop:bg-black'}  popover = "auto" id={id} ref={popoverRef}>
         <div className=' h-14 flex justify-between px-5 items-center '>
         <h1 className='text-3xl'>Editor settings</h1>
         <button
+        onClick={hidePopover}
         > 
         <svg viewBox="0 0 24 24" width="1.5em" height="1.5em" class="icon__1Md2 modal-close-btn__2d-I"><path fill-rule="evenodd" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>

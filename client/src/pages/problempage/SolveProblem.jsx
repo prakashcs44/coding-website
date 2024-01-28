@@ -10,9 +10,14 @@ function SolveProblem() {
   const problemId = useLocation().pathname.split("/")[2];
   
   async function fetchProblem(){
+     try{
       const response = await fetch("http://localhost:3000/problems/"+problemId)
       const responseJson = await response.json();
       setProblem(responseJson)
+     }
+     catch(err){
+      //
+     }
       
   }
 

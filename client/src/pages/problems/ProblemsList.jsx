@@ -8,10 +8,15 @@ const [problems,setProblems] = useState([])
 
 const fetchProblems = async ()=>{
   const url = "http://localhost:3000/problems";
+   try{
+    const response = await fetch(url);
+    const responseJson = await response.json();
+    setProblems(responseJson);
+   }
+   catch(err){
+    
+   }
 
-  const response = await fetch(url);
-  const responseJson = await response.json();
-  setProblems(responseJson?.problems);
 
 
 }
@@ -40,7 +45,7 @@ useEffect(()=>{
        <h1 className=' border-y-2 text-lg'>Title</h1>
       
        {problems?.map((problem,idx)=>{
-          return <div className=" h-10 px-2 py-2"><Link to={`/problems/${problem.id}`}>{problem.title}</Link></div>
+          return <div className=" h-10 px-2 py-2"><Link to={`/problems/${problem._id}`}>{problem.title}</Link></div>
        })}
       </div>
       <div className='w-1/12 '>
